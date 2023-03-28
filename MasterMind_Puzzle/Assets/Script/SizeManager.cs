@@ -8,6 +8,7 @@ public class SizeManager : MonoBehaviour
     public GameObject addsizeImage;
     public pressToStop pressToStop;
     internal Puzzle_Point point;
+    internal Mastermind_Spawner spawner;
     public float x_scale;
     public float y_scale;
     public float z_scale;
@@ -19,6 +20,7 @@ public class SizeManager : MonoBehaviour
     {
         //Can change to any search but I use tag because it's eazy.
         point = GameObject.FindGameObjectWithTag("PointManager").GetComponent<Puzzle_Point>();
+        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Mastermind_Spawner>();
         x_scale = addsizeImage.GetComponent<Transform>().localScale.x;
         y_scale = addsizeImage.GetComponent<Transform>().localScale.y;
         z_scale = addsizeImage.GetComponent<Transform>().localScale.z;
@@ -44,6 +46,10 @@ public class SizeManager : MonoBehaviour
             //have something bug.It worked 3 time in one condition.IDK why? (Maybe update again -_-)
             if(isWorked == false)
             {
+               //Add failed
+               spawner.destroyCount += 1;
+               spawner.Failed();
+               //Legacy
               point.Point_decresed();
               isWorked = true;
             }

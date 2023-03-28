@@ -13,11 +13,13 @@ public class pressToStop : MonoBehaviour
     protected SizeManager sizeManager;
     private int randomNumber;
     private selectedKeysList selectedKeysList;
+    private Mastermind_Spawner spawner;
     // Start is called before the first frame update
     void Start()
     {
-        //get selected keyslist from tag object
+        //get selected keyslist and Spawner scripts from tag object
         selectedKeysList = GameObject.FindGameObjectWithTag("Spawner").GetComponent<selectedKeysList>();
+        spawner = GameObject.FindGameObjectWithTag("Spawner").GetComponent<Mastermind_Spawner>();
         //I use puzzlePoint from sizeManager for less variable.
         sizeManager = pressObj.GetComponent<SizeManager>();
         RandomNumberWithoutNotSelected();
@@ -67,11 +69,19 @@ public class pressToStop : MonoBehaviour
         if (Input.GetKeyDown(selectedChar.ToString())){
             if (pressObj.GetComponent<sizetoValue>().value<=pressObj.GetComponent<sizetoValue>().valueOfCircleRange)
             {
+                //Add sucess count
+                spawner.destroyCount += 1;
+                spawner.Success();
+                //Legacy
                 sizeManager.point.Point_incresed();
                 allCircle.SetActive(false);
             }
             else
             {
+                //Add failed if miss
+                spawner.destroyCount += 1;
+                spawner.Failed();
+                //Legacy
                 sizeManager.point.Point_decresed();
                 allCircle.SetActive(false);
             }
