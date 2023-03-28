@@ -164,11 +164,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 200067131}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae837a2cff574c54da87d547296374dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 32a277bc5c446474c8a6010cd8931953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   prefabToSpawn: {fileID: 8102024672732771550, guid: 875c5b0115097a44bbbefadb0a1a598f, type: 3}
-  freq: 2
+  freq: 5
   inScreenX_Minrange: 400
   inScreenX_Maxrange: 1520
   inScreenY_Minrange: 400
@@ -270,8 +270,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50a86830be8f9348b106be3979ae0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  point: 0
-  combo: 0
   pointText: {fileID: 632697532}
   comboText: {fileID: 1328583866}
 --- !u!4 &539394140
