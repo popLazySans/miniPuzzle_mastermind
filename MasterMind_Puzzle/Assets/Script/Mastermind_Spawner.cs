@@ -10,8 +10,11 @@ public class Mastermind_Spawner : MonoBehaviour
     public int inScreenX_Maxrange;
     public int inScreenY_Minrange;
     public int inScreenY_Maxrange;
+    private selectedKeysList selectedKeysList;
+    public Puzzle_Point puzzle_Point;
     void Start()
     {
+        selectedKeysList = gameObject.GetComponent<selectedKeysList>();
         StartCoroutine(spawnObjectOntime());
     }
     IEnumerator spawnObjectOntime()
@@ -21,6 +24,8 @@ public class Mastermind_Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(freq);
             StartCoroutine(spawnObjectThreeTime());
+            RemoveAllSelectedKeysFromList();
+            puzzle_Point.resetPointGroup();
         }
     }
     IEnumerator spawnObjectThreeTime()
@@ -30,6 +35,10 @@ public class Mastermind_Spawner : MonoBehaviour
             yield return new WaitForSeconds(1f);
             spawnObject();
         }
+    }
+    public void RemoveAllSelectedKeysFromList()
+    {
+        selectedKeysList.selectedKeys.Clear();
     }
     public void spawnObject()
     {
